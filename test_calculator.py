@@ -1,5 +1,7 @@
 import unittest
 from calculator import multiply
+import xmlrunner
+import os
 
 class TestCalculator(unittest.TestCase):
 
@@ -10,4 +12,9 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(multiply(2.5, 4), 10)
 
 if __name__ == "__main__":
-    unittest.main()
+    # Ensure the test-results directory exists
+    if not os.path.exists('test-results'):
+        os.makedirs('test-results')
+
+    with open('test-results/results.xml', 'wb') as output:
+        unittest.main(testRunner=xmlrunner.XMLTestRunner(output=output))
