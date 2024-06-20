@@ -15,7 +15,7 @@ pipeline {
     post {
         always {
             // Zachowaj wynik w Jenkinsie
-            junit 'test-results/*.xml'
+            junit 'test-results/results.xml'
         }
     }
 }
